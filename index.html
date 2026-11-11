@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASHROO3 | مشروعك يبدأ هنا</title>
+<meta name="description" content="متجر إلكترونيات ومكونات مشاريع التخرج والطاقة والبرمجة في مصر.">
+<style>
+:root {
+  --navy:#102b35;
+  --teal:#19b99b;
+  --light:#f4f8f8;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Tahoma,Arial,sans-serif;
+  background:var(--light);color:#172c34;
+}
+header{
+  background:var(--navy);color:white;
+  padding:18px 7%;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:15px;
+}
+.logo{font-size:27px;font-weight:bold;letter-spacing:1px}
+.logo span{color:#35d6b4}
+nav a{
+  color:white;text-decoration:none;margin:0 10px;
+  font-size:14px;
+}
+.hero{
+  background:linear-gradient(120deg,#102b35,#176b68);
+  color:white;padding:75px 8%;text-align:center;
+}
+.hero h1{font-size:42px;margin:0 0 18px}
+.hero p{font-size:18px;color:#d4e9e7}
+.btn{
+  display:inline-block;background:var(--teal);
+  color:#062d2a;padding:13px 25px;
+  border-radius:8px;text-decoration:none;
+  font-weight:bold;border:0;cursor:pointer;
+}
+.container{max-width:1150px;margin:auto;padding:45px 20px}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{font-size:28px}
+.categories{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:15px;
+}
+.category{
+  background:white;padding:22px 10px;text-align:center;
+  border-radius:12px;box-shadow:0 3px 15px #00000009;
+  font-weight:bold;cursor:pointer;border:1px solid #e8eeee;
+}
+.category span{display:block;font-size:32px;margin-bottom:10px}
+.search{
+  display:block;width:100%;padding:15px;
+  border:1px solid #d5e0e0;border-radius:9px;
+  font-size:16px;margin-bottom:25px;
+}
+.products{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.product{
+  background:white;border-radius:13px;overflow:hidden;
+  box-shadow:0 4px 16px #0000000c;
+  border:1px solid #e8eeee;
+}
+.product-img{
+  background:#e9f5f3;height:145px;
+  display:grid;place-items:center;font-size:65px;
+}
+.product-info{padding:18px}
+.product-info h3{margin:0 0 12px}
+.product-info p{color:#718087;font-size:13px;min-height:35px}
+.price{color:#138b77;font-weight:bold;margin:15px 0}
+.order{
+  display:block;text-align:center;background:var(--navy);
+  color:white;text-decoration:none;padding:11px;
+  border-radius:7px;
+}
+.about{
+  background:#e3f2ef;padding:35px;border-radius:15px;
+  text-align:center;line-height:2;
+}
+footer{
+  background:var(--navy);color:white;
+  padding:30px;text-align:center;
+}
+footer span{color:#35d6b4}
+@media(max-width:600px){
+  .hero h1{font-size:30px}
+  header{justify-content:center}
+  nav a{margin:5px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">MASHROO<span>3</span></div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#categories">الأقسام</a>
+    <a href="#products">المنتجات</a>
+    <a href="#about">من نحن</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>مشروعك يبدأ من هنا!</h1>
+  <p>كل مكونات مشاريع التخرج والابتكار في مكان واحد</p>
+  <p>إلكترونيات | برمجة | طاقة شمسية | روبوتات</p>
+  <a href="#products" class="btn">اكتشف المنتجات</a>
+</section>
+
+<main class="container">
+
+<section id="categories">
+  <div class="section-title">
+    <h2>تسوق حسب القسم</h2>
+    <p>اختار المجال اللي بتشتغل فيه</p>
+  </div>
+  <div class="categories">
+    <div class="category" onclick="filterCategory('boards')">
+      <span>🔌</span>البوردات
+    </div>
+    <div class="category" onclick="filterCategory('sensors')">
+      <span>📡</span>الحساسات
+    </div>
+    <div class="category" onclick="filterCategory('solar')">
+      <span>☀️</span>الطاقة الشمسية
+    </div>
+    <div class="category" onclick="filterCategory('robotics')">
+      <span>🤖</span>الروبوتات
+    </div>
+    <div class="category" onclick="filterCategory('tools')">
+      <span>🛠️</span>الأدوات
+    </div>
+    <div class="category" onclick="filterCategory('all')">
+      <span>📦</span>كل المنتجات
+    </div>
+  </div>
+</section>
+
+<section id="products" style="margin-top:65px">
+  <div class="section-title">
+    <h2>منتجاتنا</h2>
+    <p>ابحث عن المكونات التي تحتاجها</p>
+  </div>
+  <input class="search" id="search"
+    placeholder="ابحث عن منتج..." oninput="searchProducts()">
+
+  <div class="products" id="productList">
+
+    <article class="product" data-category="boards">
+      <div class="product-img">🔌</div>
+      <div class="product-info">
+        <h3>Arduino Uno</h3>
+        <p>لوحة تحكم للمشاريع الإلكترونية</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('Arduino Uno');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+    <article class="product" data-category="boards">
+      <div class="product-img">💻</div>
+      <div class="product-info">
+        <h3>ESP32</h3>
+        <p>لوحة تطوير تدعم Wi-Fi وBluetooth</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('ESP32');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+    <article class="product" data-category="sensors">
+      <div class="product-img">📡</div>
+      <div class="product-info">
+        <h3>Ultrasonic Sensor</h3>
+        <p>حساس قياس المسافة</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('Ultrasonic Sensor');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+    <article class="product" data-category="solar">
+      <div class="product-img">☀️</div>
+      <div class="product-info">
+        <h3>Solar Panel</h3>
+        <p>ألواح الطاقة الشمسية</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('Solar Panel');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+    <article class="product" data-category="solar">
+      <div class="product-img">🔋</div>
+      <div class="product-info">
+        <h3>Solar Battery</h3>
+        <p>بطاريات تخزين الطاقة</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('Solar Battery');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+    <article class="product" data-category="robotics">
+      <div class="product-img">🤖</div>
+      <div class="product-info">
+        <h3>Motor Driver</h3>
+        <p>وحدة التحكم في المحركات</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('Motor Driver');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+    <article class="product" data-category="tools">
+      <div class="product-img">🔧</div>
+      <div class="product-info">
+        <h3>Breadboard</h3>
+        <p>لوحة تجارب لتوصيل الدوائر</p>
+        <div class="price">اطلب السعر</div>
+        <a class="order" href="#" onclick="order('Breadboard');return false">اطلب الآن</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="about" style="margin-top:65px">
+  <div class="about">
+    <h2>MASHROO3</h2>
+    <p>
+      منصتك لتوفير مكونات الإلكترونيات والبرمجة
+      والطاقة ومستلزمات مشاريع التخرج.
+      نساعدك تحول فكرتك إلى مشروع حقيقي.
+    </p>
+    <strong>بالشراكة مع Red Sea Solar</strong>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h2>MASHRO<span>O3</span></h2>
+  <p>Your Project Starts Here.</p>
+  <p>© 2026 MASHROO3 - All Rights Reserved</p>
+</footer>
+
+<script>
+// ضع رقم واتساب الخاص بالمنصة بدل الرقم التجريبي
+const whatsappNumber = "201000000000";
+
+function order(product){
+  const message = encodeURIComponent(
+    "مرحباً، أريد الاستفسار عن المنتج: " + product
+  );
+  window.open(
+    "https://wa.me/" + whatsappNumber + "?text=" + message,
+    "_blank"
+  );
+}
+
+function filterCategory(category){
+  document.querySelectorAll(".product").forEach(item=>{
+    item.style.display =
+      category==="all" || item.dataset.category===category
+      ? "" : "none";
+  });
+}
+
+function searchProducts(){
+  const value=document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll(".product").forEach(item=>{
+    item.style.display =
+      item.innerText.toLowerCase().includes(value) ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
